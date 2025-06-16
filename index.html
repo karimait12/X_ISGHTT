@@ -1,10 +1,9 @@
-</html>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تهانينا!</title>
+    <title>بوابة النهاية</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,18 +11,43 @@
 </head>
 <body>
     <div class="container">
-        <div class="success-box">
-            <svg class="icon trophy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                <path d="M18.5 3a2.5 2.5 0 0 0-2.475 2.217L15.5 6.5h-7l-.525-1.283A2.5 2.5 0 0 0 5.5 3h-1A1.5 1.5 0 0 0 3 4.5v1A1.5 1.5 0 0 0 4.5 7h1V8a7.5 7.5 0 0 0 15 0V7h1a1.5 1.5 0 0 0 1.5-1.5v-1A1.5 1.5 0 0 0 19.5 3h-1ZM6.5 21a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5V9.667a9.001 9.001 0 0 1-11 0V21Z"/>
+        <div class="form-box">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                <path d="M12 1.5a10.5 10.5 0 1 0 10.5 10.5A10.512 10.512 0 0 0 12 1.5Zm0 19.5a9 9 0 1 1 9-9 9.01 9.01 0 0 1-9 9Z"/>
+                <path d="M12 6a1.5 1.5 0 0 0-1.5 1.5v6a1.5 1.5 0 0 0 3 0v-6A1.5 1.5 0 0 0 12 6Z"/>
+                <circle cx="12" cy="18" r="1.5"/>
             </svg>
-            <h1>تهانينا!</h1>
-            <p class="final-message">
-                لقد حللت اللغز ووصلت إلى النهاية.
-                <br>
-                لتحديد الفائز، يجب عليك إرسال لقطة شاشة لهذه الصفحة مع طلب صداقة إلى
-                <a href="https://www.facebook.com/profile.php?id=example" target="_blank" rel="noopener noreferrer">هذا الحساب الخاص</a>.
-            </p>
+            <h1>المرحلة النهائية</h1>
+            <p class="subtitle">أدخل الشفرة التي وجدتها للوصول إلى الكنز.</p>
+            <form id="passwordForm">
+                <input type="password" id="password" name="password" placeholder="أدخل الشفرة هنا..." required>
+                <button type="submit">فتح البوابة</button>
+            </form>
+            <p id="error-message" class="error"></p>
         </div>
     </div>
+
+    <script>
+   const PASSWORD = "2836";
+
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputPassword = document.getElementById('password').value;
+
+            if (inputPassword === PASSWORD) {
+            window.location.href = 'index.html';
+
+            } else {
+            errorMessage.textContent = 'شفرة غير صحيحة. حاول مرة أخرى.';
+            }
+        });
+    
+        // إظهار رسالة خطأ إذا كانت كلمة السر غير صحيحة
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('error')) {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = 'شفرة غير صحيحة. حاول مرة أخرى.';
+        }
+    </script>
 </body>
 </html>
